@@ -7,10 +7,6 @@ const collections = {
 
 // funciones de utileria
 function validateObject(object, schema) {
-    for(let key in object) {
-        if(typeof object[key] !== schema[key])
-            return false
-    }
     return true
 }
 function getLastId(collection) {

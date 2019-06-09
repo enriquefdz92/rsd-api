@@ -4,7 +4,7 @@ let schema = {
     id: 'number',
     name: 'string',
     lastName: 'string',
-    skills: []
+    skills: 'object'
 }
 
 // contenido inicial
