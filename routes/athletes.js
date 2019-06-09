@@ -16,13 +16,20 @@ router.get('/:id', (req, res, next) => {
   let athlete = DB.select('athletes', id)
   res.status(200).send(athlete)
 });
-// GET consultar usuario especifico
+
+// GET consultar skills de un usuario especifico
 router.get('/:id/skills', (req, res, next) => {
   let id = parseInt(req.params.id)
   let skills = DB.select('athletes', id).skills
   res.status(200).send(skills)
 });
-
+// PUT actualizar skills de un usuario
+router.put('/:id/skills', (req, res, next) => {
+  let id = parseInt(req.params.id)
+  let object = Object.assign(req.body, {id: id})
+  let athlete = DB.update('athletes', object)
+  res.status(200).send(athlete)
+})
 // POST insertar usuario
 router.post('/', (req, res, next) => {
   let athlete = DB.insert('athletes', req.body)
