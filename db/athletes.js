@@ -47,6 +47,16 @@ let data = [
                 lvl: "lvl_rx"
             }
         ]
+    },  {
+        id: 3,
+        name: "Abel",
+        lastName: "Lopez",
+        skills: [
+            {
+                id: 1,
+                lvl: "lvl_sc"
+            }
+        ]
     }
 ]
 
