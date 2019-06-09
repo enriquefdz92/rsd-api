@@ -26,8 +26,9 @@ router.get('/:id/skills', (req, res, next) => {
 // PUT actualizar skills de un usuario
 router.put('/:id/skills', (req, res, next) => {
   let id = parseInt(req.params.id)
-  let object = Object.assign(req.body, {id: id})
-  let athlete = DB.update('athletes', object)
+  let athleteToUpdate = DB.select('athletes', id)
+  let athleteUpdated = athleteToUpdate.skills.push(req.body)
+  let athlete = DB.update('athletes', athleteUpdated)
   res.status(200).send(athlete)
 })
 // POST insertar usuario
