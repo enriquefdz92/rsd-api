@@ -27,12 +27,19 @@ router.get('/:id/skills', (req, res, next) => {
 router.put('/:id/skills', (req, res, next) => {
   let id = parseInt(req.params.id)
   let athleteToUpdate = DB.select('athletes', id)
-  let athleteUpdated = athleteToUpdate.skills.push(req.body)
-  let athlete = DB.update('athletes', athleteUpdated)
+  console.log(athleteToUpdate.hasOwnProperty('skills'))
+  if (athleteToUpdate.hasOwnProperty('skills')){
+    athleteToUpdate.skills=athleteToUpdate.skills.concat(req.body)
+  } else{
+    athleteToUpdate.skills = new Array (req.body)
+  } 
+  console.log(athleteToUpdate)
+  let athlete = DB.update('athletes', athleteToUpdate)
   res.status(200).send(athlete)
 })
 // POST insertar usuario
 router.post('/', (req, res, next) => {
+  console.log(req.body)
   let athlete = DB.insert('athletes', req.body)
   res.status(200).send(athlete)
 })
@@ -40,7 +47,9 @@ router.post('/', (req, res, next) => {
 // PUT actualizar usuario
 router.put('/:id', (req, res, next) => {
   let id = parseInt(req.params.id)
-  let object = Object.assign(req.body, {id: id})
+  let object = Object.assign(req.body, {
+    id: id
+  })
   let athlete = DB.update('athletes', object)
   res.status(200).send(athlete)
 })
@@ -53,4 +62,3 @@ router.delete('/:id', (req, res, next) => {
 })
 
 module.exports = router;
-

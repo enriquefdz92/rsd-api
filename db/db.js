@@ -1,52 +1,47 @@
-// en la arquitectura esto seria parte de la capa de datos
-
 const collections = {
     skills: require('./skills'),
     athletes: require('./athletes'),
 }
 
-// funciones de utileria
-function validateObject(object, schema) {
-    return true
-}
+
 function getLastId(collection) {
     let data = collections[collection].data
-    let lastObj = data[data.length - 1] || {id: 0}
+    let lastObj = data[data.length - 1] || {
+        id: 0
+    }
     return lastObj.id
 }
 
-// representa un SELECT de SQL
-// TODO: tercer parametro es demasiado especifico, deberia ser un objeto que represente filtros adicionales
-function select(collection, id, athleteId) {
+
+function select(collection, id, params) {
     let data = collections[collection].data
-    if(id) {
-        return data.find(e => e.id === id && (athleteId ? e.athleteId === athleteId : true))
-    }else {
-        return data.filter(e => athleteId ? e.athleteId === athleteId : true)
+    if (id) {
+        return data.find(e => e.id === id && (params ? e.params === params : true))
+    } else {
+        return data.filter(e => params ? e.params === params : true)
     }
 }
 
 // representa un INSERT de SQL
 function insert(collection, object) {
     let id = getLastId(collection)
-    Object.assign(object, {id: id + 1})
-    if(validateObject(object, collections[collection].schema)) {
-        collections[collection].data.push(object)
-        return object
-    }
-    return null
+    Object.assign(object, {
+        id: id + 1
+    })
+
+    collections[collection].data.push(object)
+    return object
+
 }
 
 // representa un UPDATE de SQL
 function update(collection, object) {
     let id = object.id
-    if(validateObject(object, collections[collection].schema)) {
-        let data = collections[collection].data
-        let element = data.find(e => e.id === id)
-        Object.assign(element, object)
-        return object
-    }
-    return null
+    let data = collections[collection].data
+    let element = data.find(e => e.id === id)
+    Object.assign(element, object)
+    return object
+
 }
 
 // representa un DELETE de SQL

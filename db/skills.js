@@ -8,7 +8,7 @@ let schema = {
     lvl_rx: 'string'
 }
 
-// contenido inicial
+// DEFAULT CONTENT
 let data = [{
     id: 1,
     title: 'Front Squat',

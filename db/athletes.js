@@ -7,7 +7,7 @@ let schema = {
     skills: 'object'
 }
 
-// contenido inicial
+// DEFAULT CONTENT
 let data = [
     {
         id: 1,
