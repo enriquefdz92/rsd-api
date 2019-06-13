@@ -126,7 +126,7 @@ ENRIQUE FERNANDEZ CASTILLA
             ]
         }
 
-/skill
+/skills
 
     Method: GET
     Route: "/" 
