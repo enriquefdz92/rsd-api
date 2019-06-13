@@ -22,7 +22,6 @@ app.use(express.static(path.join(__dirname, 'public')))
 // rutas de los recursos, representa el Nivel 1 de un API REST
 app.use('/', indexRouter) // pagina de hola mundo
 app.use('/athletes', athletesRouter) // operaciones hacia el recurso de 'usuarios'
-
 app.use('/skills', skillsRouter) // operaciones hacia el recurso de 'tareas'
 
 

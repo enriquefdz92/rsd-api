@@ -4,6 +4,8 @@ let schema = {
     id: 'number',
     name: 'string',
     lastName: 'string',
+    age: 'int',
+    addedDate: 'Date',
     skills: 'object'
 }
 
@@ -13,6 +15,8 @@ let data = [
         id: 1,
         name: "Enrique",
         lastName: "Fernandez",
+        age: 27,
+        addedDate: "6/9/2019",
         skills: [
             {
                 id: 1,
@@ -32,6 +36,8 @@ let data = [
         id: 2,
         name: "Humberto",
         lastName: "Felix",
+        age: 29,
+        addedDate: "6/9/2019",
         skills: [
             {
                 id: 1,
@@ -51,6 +57,8 @@ let data = [
         id: 3,
         name: "Abel",
         lastName: "Lopez",
+        age: 31,
+        addedDate: "6/9/2019",
         skills: [
             {
                 id: 1,
