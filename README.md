@@ -18,7 +18,7 @@ ENRIQUE FERNANDEZ CASTILLA
     Route: GET "/" 
     Description: Regresa todos los athletas registrados.
     Response Body: 
-    #<code>
+`
     [
         {
             "id": int,
@@ -34,4 +34,4 @@ ENRIQUE FERNANDEZ CASTILLA
             ]
         }
     ]
-    #</code>
+`
